@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors</title>
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="resetutil.css" />
+    <link rel="stylesheet" href="index.css" />
+    <script type="module" src="index.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <img class="logo" src="images/logo.svg" alt="Logo" />
+
+        <div class="score-board">
+          <h3>SCORE</h3>
+          <p>33</p>
+        </div>
+      </header>
+
+      <section class="game-wrapper">
+        <div class="game-board" id="gameBoard">
+          <button type="button" class="btn-hand btn-paper" id="paper">
+            <img src="images/icon-paper.svg" alt="Paper" />
+          </button>
+          <button type="button" class="btn-hand btn-scissors" id="scissors">
+            <img src="images/icon-scissors.svg" alt="Scissors" />
+          </button>
+          <button type="button" class="btn-hand btn-rock" id="rock">
+            <img src="images/icon-rock.svg" alt="Rock" />
+          </button>
+        </div>
+
+        <div class="game-decision">
+          <div class="pick-container">
+            <button type="button" class="btn-hand btn-paper btn-large winner">
+              <!-- NOTE JS Should Implement -->
+              <img src="images/icon-paper.svg" alt="" />
+            </button>
+            <p class="pick-text">YOU PICKED</p>
+          </div>
+
+          <div class="pick-container">
+            <!-- NOTE Make hidden when reveal is done -->
+            <!-- <div class="empty-placeholder"></div> -->
+            <button type="button" class="btn-hand btn-rock btn-large">
+              <!-- NOTE JS Should Implement Img -->
+              <img src="images/icon-rock.svg" alt="" />
+            </button>
+            <p class="pick-text">THE HOUSE PICKED</p>
+          </div>
+        </div>
+
+        <div class="verdict">
+          <h3>YOU WIN</h3>
+          <button type="button">PLAY AGAIN</button>
+        </div>
+
+        <div class="game-rules">
+          <button type="button" id="rules">Rules</button>
+        </div>
+      </section>
+    </main>
+    <div class="rule-info"></div>
+  </body>
+</html>

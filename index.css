@@ -1,0 +1,312 @@
+/* ANCHOR Main Structure */
+main {
+  flex: 1;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  background-image: radial-gradient(circle, #1f3756 50%, #141539);
+  padding: 1rem;
+}
+
+/* ANCHOR Header Structure */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: min(100%, 43.75rem);
+  border: 3px solid rgba(119, 136, 153, 0.382);
+  border-radius: 10px;
+  padding: 0.7rem;
+  margin-bottom: 3rem;
+  margin-inline: auto;
+
+  .logo {
+    height: 4rem;
+  }
+
+  .score-board {
+    align-content: center;
+    padding: 0.7rem 1.1rem;
+    background-color: azure;
+    border-radius: 7px;
+    box-shadow: 1px 1px 5px #000000c4;
+
+    h3 {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #2a46c0;
+    }
+
+    p {
+      color: #111111b6;
+      text-align: center;
+      margin-bottom: 0;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
+}
+
+/* ANCHOR Game Wrapper Structure */
+.game-wrapper {
+  height: 70svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 30rem);
+  margin-inline: auto;
+
+  /* ANCHOR Button Design */
+  .btn-hand {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    transition: transform 0.1s;
+
+    &:active {
+      transform: translateY(4px);
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 75%;
+      aspect-ratio: 1;
+      background-color: #e1e4ed;
+      border-radius: 50%;
+    }
+
+    img {
+      z-index: 1;
+      width: 40%;
+      pointer-events: none;
+    }
+  }
+
+  /* ANCHOR Button Designs */
+  .btn-paper {
+    background: linear-gradient(hsl(230 89% 62%), hsl(230 89% 65%));
+    box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #2844a1;
+
+    &:active {
+      box-shadow: inset 0 -4px 0 rgba(0 0 0 / 0.15), 0 2px 0 #2844a1;
+    }
+  }
+
+  .btn-scissors {
+    background: linear-gradient(hsl(39 89% 49%), hsl(40 84% 53%));
+    box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.15), 0 6px 0 #c76c18;
+
+    &:active {
+      box-shadow: inset 0 -4px 0 rgba(0 0 0 / 0.15), 0 2px 0 #c76c18;
+    }
+  }
+
+  .btn-rock {
+    background: linear-gradient(hsl(349 71% 52%), hsl(349 70% 56%));
+    box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #9d1634;
+
+    &:active {
+      box-shadow: inset 0 -4px 0 rgba(0 0 0 / 0.15), 0 2px 0 #9d1634;
+    }
+  }
+
+  /* ANCHOR Game Board Design */
+  .game-board {
+    position: relative;
+    width: 100%;
+    height: 23rem;
+    background-image: url(images/bg-triangle.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 310px;
+
+    .btn-hand {
+      position: absolute;
+      width: 9rem;
+    }
+
+    .btn-paper {
+      top: 0;
+      left: 0;
+    }
+    .btn-scissors {
+      top: 0;
+      right: 0;
+    }
+
+    .btn-rock {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &:active {
+        transform: translateX(-50%) translateY(4px);
+      }
+    }
+  }
+
+  /* ANCHOR Game Decision Design */
+  .game-decision {
+    display: none;
+    gap: 3rem;
+
+    .pick-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+
+      .pick-text {
+        color: azure;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      /* NOTE Remove when ready */
+      .hidden-hand {
+        display: none;
+      }
+    }
+
+    .btn-hand {
+      width: 7.5rem;
+      aspect-ratio: 1;
+      cursor: default;
+      z-index: 0;
+
+      &:active {
+        transform: none;
+        box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #1b2b46;
+      }
+
+      &.btn-paper:active {
+        box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #2844a1;
+      }
+      &.btn-scissors:active {
+        box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #c76c18;
+      }
+      &.btn-rock:active {
+        box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #9d1634;
+      }
+    }
+
+    .btn-hand.winner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      z-index: -1;
+      box-shadow: 0 0 0 40px rgba(255, 255, 255, 0.04), 0 0 0 80px rgba(255, 255, 255, 0.03), 0 0 0 130px rgba(255, 255, 255, 0.02);
+      opacity: 1;
+      animation: ripple 1s ease-out forwards infinite;
+    }
+
+    .empty-placeholder {
+      width: 11rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      animation: reveal 1.5s ease 2;
+    }
+  }
+
+  /* ANCHOR Verdict Design */
+  .verdict {
+    display: none;
+    margin-top: 10%;
+
+    h3 {
+      font-size: 4rem;
+      font-weight: bolder;
+      text-shadow: 1px 1px 7px #000000;
+    }
+
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      background-color: azure;
+      color: #333;
+      border: none;
+      border-radius: 10px;
+      padding-block: 1rem;
+    }
+  }
+
+  /* ANCHOR Game Rules Design */
+  .game-rules {
+    margin-top: 30%;
+
+    button {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: azure;
+      padding: 0.5rem 2rem;
+      border: 2px solid silver;
+      border-radius: 10px;
+      background: transparent;
+      cursor: pointer;
+
+      &:active {
+        transform: translateY(4px);
+      }
+    }
+  }
+}
+
+.rule-info {
+  position: absolute;
+  background-color: rgba(0 0 0 / 0.4);
+  width: 100%;
+  height: 100%;
+  left: -100%;
+  display: flex;
+  align-items: center;
+  transition: all 1s linear;
+
+  > :first-child {
+    height: 50dvh;
+    width: 90%;
+    background-color: azure;
+    margin-inline: auto;
+    border-radius: 10px;
+  }
+
+  &.reveal-info {
+    left: 0;
+  }
+}
+
+@keyframes reveal {
+  0% {
+    background-color: rgba(0 0 0 / 0.1);
+    transform: scale(1);
+  }
+  50% {
+    background-color: rgba(0 0 0 / 0.3);
+    transform: scale(1.2);
+  }
+  100% {
+    background-color: rgba(0 0 0 / 0.1);
+    transform: scale(1);
+  }
+}
+
+@keyframes ripple {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
