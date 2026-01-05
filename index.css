@@ -124,6 +124,7 @@ header {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 310px;
+    transition: opacity 1s ease;
 
     .btn-hand {
       position: absolute;
@@ -154,6 +155,7 @@ header {
   .game-decision {
     display: none;
     gap: 3rem;
+    transition: opacity 1s ease;
 
     .pick-container {
       display: flex;
@@ -168,11 +170,6 @@ header {
         text-transform: uppercase;
         text-align: center;
       }
-
-      /* NOTE Remove when ready */
-      .hidden-hand {
-        display: none;
-      }
     }
 
     .btn-hand {
@@ -180,6 +177,8 @@ header {
       aspect-ratio: 1;
       cursor: default;
       z-index: 0;
+      opacity: 0;
+      transition: opacity 1.3s ease-in;
 
       &:active {
         transform: none;
@@ -210,22 +209,14 @@ header {
       opacity: 1;
       animation: ripple 1s ease-out forwards infinite;
     }
-
-    .empty-placeholder {
-      width: 11rem;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      animation: reveal 1.5s ease 2;
-    }
   }
 
   /* ANCHOR Verdict Design */
   .verdict {
-    display: none;
-    margin-top: 10%;
+    visibility: hidden;
 
     h3 {
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: bolder;
       text-shadow: 1px 1px 7px #000000;
     }
@@ -262,41 +253,56 @@ header {
   }
 }
 
-.rule-info {
+.rules-info {
   position: absolute;
   background-color: rgba(0 0 0 / 0.4);
   width: 100%;
   height: 100%;
-  left: -100%;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
   display: flex;
   align-items: center;
-  transition: all 1s linear;
+  z-index: 1;
+  color: #000000;
 
-  > :first-child {
-    height: 50dvh;
+  .rules-layout {
+    height: 60dvh;
     width: 90%;
     background-color: azure;
     margin-inline: auto;
     border-radius: 10px;
+    padding: 1rem;
+    width: min(90%, 40rem);
+
+    > :first-child {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h3 {
+        font-weight: bolder;
+        font-size: 1.5rem;
+      }
+
+      button {
+        border: none;
+        background: none;
+
+        img {
+          pointer-events: none;
+        }
+      }
+    }
+
+    > :last-child {
+      display: grid;
+      place-items: center;
+      height: 100%;
+    }
   }
 
-  &.reveal-info {
-    left: 0;
-  }
-}
-
-@keyframes reveal {
-  0% {
-    background-color: rgba(0 0 0 / 0.1);
-    transform: scale(1);
-  }
-  50% {
-    background-color: rgba(0 0 0 / 0.3);
-    transform: scale(1.2);
-  }
-  100% {
-    background-color: rgba(0 0 0 / 0.1);
-    transform: scale(1);
+  &.reveal-rules {
+    transform: translateX(0);
   }
 }
 
