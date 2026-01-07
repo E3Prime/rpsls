@@ -22,7 +22,7 @@
     </header>
     <main>
       <section class="game-wrapper">
-        <div class="game-board">
+        <div class="game-board" id="gameBoard">
           <button type="button" class="btn-hand btn-paper" id="paper">
             <img src="images/icon-paper.svg" alt="Paper" />
           </button>
@@ -34,35 +34,35 @@
           </button>
         </div>
 
-        <div class="game-decision">
+        <div class="game-decision-board" id="gameDecisionBoard">
           <div class="picked-hand">
-            <button type="button" class="btn-hand btn-paper" id="paper">
+            <button type="button" class="btn-hand">
               <img src="images/icon-paper.svg" alt="Player Hand" />
             </button>
             <p>PLAYER PICKED</p>
           </div>
           <div class="picked-hand">
             <button type="button" class="mystery-hand">
-              <!-- NOTE Inject img when during moment phase -->
+            
             </button>
             <p>COMPUTER PICKED</p>
           </div>
 
-          <div class="verdict" id="verdict">
+          <div class="verdict" id="gameVerdict">
             <h3>|</h3>
-            <button type="button">PLAY AGAIN</button>
+            <button type="button" disabled">PLAY AGAIN</button>
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <button type="button">RULES</button>
+      <button type="button" id="openRules">RULES</button>
     </footer>
-    <article class="rules">
+    <article class="rules-design">
       <h3>RULES</h3>
       <img src="images/image-rules.svg" alt="Rules" />
-      <button type="button">
+      <button type="button" id="closeRules">
         <img src="images/icon-close.svg" alt="Close Rules" />
       </button>
     </article>
