@@ -5,7 +5,7 @@ body {
 
 header {
   margin-top: 1rem;
-  width: min(95%, 43.75rem);
+  width: min(95%, 29rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,7 +67,7 @@ footer {
 
 /* ANCHOR Game Wrapper Structure */
 .game-wrapper {
-  width: clamp(21rem, 70svw, 33rem);
+  width: clamp(21rem, 70svw, 31rem);
   aspect-ratio: 9 / 16;
   margin-inline: auto;
   display: flex;
@@ -343,5 +343,15 @@ footer {
       height: 100%;
       background-size: 90% 90%;
     }
+  }
+
+  .rules-design {
+  }
+}
+
+@media (width > 512px) {
+  footer {
+    text-align: end;
+    margin-right: 1rem;
   }
 }
