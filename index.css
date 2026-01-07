@@ -1,21 +1,17 @@
-/* ANCHOR Main Structure */
-main {
-  flex: 1;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+body {
   background-image: radial-gradient(circle, #1f3756 50%, #141539);
-  padding: 1rem;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
-/* ANCHOR Header Structure */
 header {
+  margin-top: 1rem;
+  width: min(95%, 43.75rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: min(100%, 43.75rem);
-  border: 3px solid rgba(119, 136, 153, 0.382);
-  border-radius: 10px;
+  border: 2px solid rgba(119 136 153 / 0.4);
+  border-radius: 7px;
   padding: 0.7rem;
-  margin-bottom: 3rem;
   margin-inline: auto;
 
   .logo {
@@ -45,49 +41,38 @@ header {
   }
 }
 
-/* ANCHOR Game Wrapper Structure */
-.game-wrapper {
-  height: 70svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: min(100%, 30rem);
-  margin-inline: auto;
+main {
+  align-content: center;
+}
 
-  /* ANCHOR Button Design */
-  .btn-hand {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+footer {
+  margin-bottom: 1rem;
+  text-align: center;
+  > :first-child {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: azure;
+    padding: 0.5rem 2rem;
+    border: 2px solid rgba(192 192 192 0.7);
+    border-radius: 10px;
+    background: transparent;
     cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    aspect-ratio: 1;
-    transition: transform 0.1s;
 
     &:active {
       transform: translateY(4px);
     }
-
-    &:before {
-      content: "";
-      position: absolute;
-      width: 75%;
-      aspect-ratio: 1;
-      background-color: #e1e4ed;
-      border-radius: 50%;
-    }
-
-    img {
-      z-index: 1;
-      width: 40%;
-      pointer-events: none;
-    }
   }
+}
 
-  /* ANCHOR Button Designs */
+/* ANCHOR Game Wrapper Structure */
+.game-wrapper {
+  width: clamp(21rem, 70svw, 33rem);
+  aspect-ratio: 9 / 16;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   .btn-paper {
     background: linear-gradient(hsl(230 89% 62%), hsl(230 89% 65%));
     box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #2844a1;
@@ -114,33 +99,59 @@ header {
       box-shadow: inset 0 -4px 0 rgba(0 0 0 / 0.15), 0 2px 0 #9d1634;
     }
   }
+}
 
-  /* ANCHOR Game Board Design */
-  .game-board {
-    position: relative;
-    width: 100%;
-    height: 23rem;
-    background-image: url(images/bg-triangle.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 310px;
-    transition: opacity 1s ease;
+/* ANCHOR Game Board Design */
+.game-board {
+  height: 50%;
+  background-image: url(images/bg-triangle.svg);
+  background-size: 90% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: opacity 1s ease;
 
-    .btn-hand {
-      position: absolute;
-      width: 9rem;
+  .btn-hand {
+    width: 6.3rem;
+    aspect-ratio: 1;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    transition: transform 0.1s;
+
+    &:active {
+      transform: translateY(4px);
     }
 
-    .btn-paper {
+    &:before {
+      content: "";
+      position: absolute;
+      width: 75%;
+      aspect-ratio: 1;
+      background-color: #e1e4ed;
+      border-radius: 50%;
+    }
+
+    img {
+      z-index: 1;
+      width: 40%;
+      pointer-events: none;
+    }
+
+    &.btn-paper {
       top: 0;
       left: 0;
     }
-    .btn-scissors {
+    &.btn-scissors {
       top: 0;
       right: 0;
     }
 
-    .btn-rock {
+    &.btn-rock {
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
@@ -150,53 +161,73 @@ header {
       }
     }
   }
+}
 
-  /* ANCHOR Game Decision Design */
-  .game-decision {
-    display: none;
-    gap: 3rem;
-    transition: opacity 1s ease;
+/* ANCHOR Game Decision Design */
+.game-decision {
+  display: none;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+  transition: opacity 1s ease;
 
-    .pick-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
+  .picked-hand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.3rem;
 
-      .pick-text {
-        color: azure;
-        font-size: 1rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        text-align: center;
-      }
+    > :last-child {
+      font-weight: 600;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 0;
     }
+  }
 
-    .btn-hand {
-      width: 7.5rem;
+  .btn-hand {
+    width: 6.3rem;
+    aspect-ratio: 1;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    z-index: 0;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 75%;
       aspect-ratio: 1;
-      cursor: default;
-      z-index: 0;
-      opacity: 0;
-      transition: opacity 1.3s ease-in;
-
-      &:active {
-        transform: none;
-        box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #1b2b46;
-      }
-
-      &.btn-paper:active {
-        box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #2844a1;
-      }
-      &.btn-scissors:active {
-        box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #c76c18;
-      }
-      &.btn-rock:active {
-        box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #9d1634;
-      }
+      background-color: #e1e4ed;
+      border-radius: 50%;
     }
 
-    .btn-hand.winner::after {
+    img {
+      z-index: 1;
+      width: 40%;
+      pointer-events: none;
+    }
+
+    &:active {
+      transform: none;
+      box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #1b2b46;
+    }
+
+    &.btn-paper {
+      box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #2844a1;
+    }
+    &.btn-scissors {
+      box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #c76c18;
+    }
+    &.btn-rock:active {
+      box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #9d1634;
+    }
+
+    &::after {
       content: "";
       position: absolute;
       top: 0;
@@ -205,24 +236,33 @@ header {
       height: 100%;
       border-radius: 50%;
       z-index: -1;
-      box-shadow: 0 0 0 40px rgba(255, 255, 255, 0.04), 0 0 0 80px rgba(255, 255, 255, 0.03), 0 0 0 130px rgba(255, 255, 255, 0.02);
-      opacity: 1;
+      box-shadow: 0 0 0 40px rgba(255 255 255 / 0.04), 0 0 0 80px rgba(255 255 255 / 0.03), 0 0 0 130px rgba(255 255 255 / 0.02);
       animation: ripple 1s ease-out forwards infinite;
     }
   }
 
-  /* ANCHOR Verdict Design */
+  .mystery-hand {
+    width: 6.3rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: reveal 1.5s 3 forwards;
+  }
+
   .verdict {
+    width: 100%;
+    text-align: center;
     visibility: hidden;
 
     h3 {
-      font-size: 3rem;
+      font-size: 2.3rem;
       font-weight: bolder;
       text-shadow: 1px 1px 7px #000000;
     }
 
     button {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       width: 100%;
       background-color: azure;
       color: #333;
@@ -231,88 +271,63 @@ header {
       padding-block: 1rem;
     }
   }
-
-  /* ANCHOR Game Rules Design */
-  .game-rules {
-    margin-top: 30%;
-
-    button {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: azure;
-      padding: 0.5rem 2rem;
-      border: 2px solid silver;
-      border-radius: 10px;
-      background: transparent;
-      cursor: pointer;
-
-      &:active {
-        transform: translateY(4px);
-      }
-    }
-  }
 }
 
-.rules-info {
+.rules {
   position: absolute;
-  background-color: rgba(0 0 0 / 0.4);
   width: 100%;
   height: 100%;
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
+  background-color: azure;
   display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
   align-items: center;
-  z-index: 1;
-  color: #000000;
 
-  .rules-layout {
-    height: 60dvh;
-    width: 90%;
-    background-color: azure;
-    margin-inline: auto;
-    border-radius: 10px;
-    padding: 1rem;
-    width: min(90%, 40rem);
+  h3 {
+    color: #000000;
+    font-size: 1.3rem;
+    font-weight: bolder;
+  }
 
-    > :first-child {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  > :last-child {
+    border: none;
+    background: none;
 
-      h3 {
-        font-weight: bolder;
-        font-size: 1.5rem;
-      }
-
-      button {
-        border: none;
-        background: none;
-
-        img {
-          pointer-events: none;
-        }
-      }
-    }
-
-    > :last-child {
-      display: grid;
-      place-items: center;
-      height: 100%;
+    img {
+      height: 1.5rem;
+      aspect-ratio: 1;
     }
   }
 
-  &.reveal-rules {
+  &.reveal {
     transform: translateX(0);
   }
 }
 
 @keyframes ripple {
   from {
-    opacity: 0;
+    opacity: 0.3;
     transform: scale(0.8);
   }
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 azure);
+  }
+  50% {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 1rem azure);
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 azure);
   }
 }

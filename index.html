@@ -13,18 +13,16 @@
     <script type="module" src="index.js" defer></script>
   </head>
   <body>
+    <header>
+      <img class="logo" src="images/logo.svg" alt="Logo" />
+      <div class="score-board">
+        <h3>SCORE</h3>
+        <p id="score">0</p>
+      </div>
+    </header>
     <main>
-      <header>
-        <img class="logo" src="images/logo.svg" alt="Logo" />
-
-        <div class="score-board">
-          <h3>SCORE</h3>
-          <p id="score">0</p>
-        </div>
-      </header>
-
       <section class="game-wrapper">
-        <div class="game-board" id="gameBoard">
+        <div class="game-board">
           <button type="button" class="btn-hand btn-paper" id="paper">
             <img src="images/icon-paper.svg" alt="Paper" />
           </button>
@@ -36,45 +34,37 @@
           </button>
         </div>
 
-        <div class="game-decision" id="gameDecision">
-          <div class="pick-container">
-            <button type="button" class="btn-hand btn-large">
+        <div class="game-decision">
+          <div class="picked-hand">
+            <button type="button" class="btn-hand btn-paper" id="paper">
               <img src="images/icon-paper.svg" alt="Player Hand" />
             </button>
-            <p class="pick-text">YOU PICKED</p>
+            <p>PLAYER PICKED</p>
           </div>
-
-          <div class="pick-container">
-            <button type="button" class="btn-hand btn-large">
-              <img src="images/icon-rock.svg" alt="Computer Hand" />
+          <div class="picked-hand">
+            <button type="button" class="mystery-hand">
+              <!-- NOTE Inject img when during moment phase -->
             </button>
-            <p class="pick-text">COMPUTER PICKED</p>
+            <p>COMPUTER PICKED</p>
           </div>
-        </div>
 
-        <div class="verdict" id="gameVerdict">
-          <h3></h3>
-          <button type="button" id="playAgain">PLAY AGAIN</button>
-        </div>
-
-        <div class="game-rules">
-          <button type="button" id="rules">Rules</button>
+          <div class="verdict" id="verdict">
+            <h3>|</h3>
+            <button type="button">PLAY AGAIN</button>
+          </div>
         </div>
       </section>
     </main>
-    <div class="rules-info" id="infoRules">
-      <div class="rules-layout">
-        <div>
-          <h3>RULES</h3>
-          <button type="button" id="closeRules">
-            <img src="images/icon-close.svg" alt="Close" />
-          </button>
-        </div>
 
-        <div>
-          <img src="images/image-rules.svg" alt="Rules" />
-        </div>
-      </div>
-    </div>
+    <footer>
+      <button type="button">RULES</button>
+    </footer>
+    <article class="rules">
+      <h3>RULES</h3>
+      <img src="images/image-rules.svg" alt="Rules" />
+      <button type="button">
+        <img src="images/icon-close.svg" alt="Close Rules" />
+      </button>
+    </article>
   </body>
 </html>
