@@ -35,3 +35,11 @@ The goal of this project was to handle this complexity cleanly. Instead of clutt
   - Uses relative units (`rem`, `%`) and media queries to resize the pentagon grid layout dynamically.
   - The UI adjusts touch targets for mobile users while maintaining a clean aesthetic on desktop.
 - **Rules Modal:** An overlay accessible at any time to remind players of the win conditions (e.g., "Lizard poisons Spock").
+
+## 🛠️ Technologies Used
+
+- **HTML** For structure.
+- **CSS** The layout was built for mobile screens first, using Media Queries to scale up to complex desktop layouts. It heavily utilizes **Flexbox** for alignment and **CSS Animations** (`@keyframes`) for the fading transitions.
+- **JavaScript (ES6+):**
+  - Utilized a `Map` based data structure for efficient, cleaner win-logic (handling 5 variables without nested if-statements).
+  - Managed complex DOM state changes for the game flow.
