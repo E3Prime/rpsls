@@ -1,11 +1,49 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-display: swap;
+}
+
+:root {
+  --bg-blue-gradient: radial-gradient(circle, #1f3756 50%, #141539);
+}
+
 body {
-  background-image: radial-gradient(circle, #1f3756 50%, #141539);
   font-family: "Roboto", Arial, Helvetica, sans-serif;
+  background-image: var(--bg-blue-gradient);
 }
 
 header {
   margin-top: 1rem;
-  width: min(95%, 29rem);
+  width: min(95%, 30rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,12 +53,12 @@ header {
   margin-inline: auto;
 
   .logo {
-    height: 4rem;
+    height: 6rem;
   }
 
   .score-board {
     align-content: center;
-    padding: 0.7rem 1.1rem;
+    padding: 0.4rem 1rem;
     background-color: azure;
     border-radius: 7px;
     box-shadow: 1px 1px 5px #000000c4;
@@ -49,6 +87,7 @@ main {
 footer {
   margin-bottom: 1rem;
   text-align: center;
+
   > :first-child {
     font-size: 1.1rem;
     font-weight: 700;
@@ -76,28 +115,66 @@ footer {
 
   .btn-paper {
     background: linear-gradient(hsl(230 89% 62%), hsl(230 89% 65%));
-    box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #2844a1;
+    box-shadow:
+      inset 0 -6px 0 rgba(0 0 0 / 0.15),
+      0 6px 0 #2844a1;
 
     &:active {
-      box-shadow: inset 0 -4px 0 rgba(0 0 0 / 0.15), 0 2px 0 #2844a1;
+      box-shadow:
+        inset 0 -4px 0 rgba(0 0 0 / 0.15),
+        0 2px 0 #2844a1;
     }
   }
 
   .btn-scissors {
     background: linear-gradient(hsl(39 89% 49%), hsl(40 84% 53%));
-    box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.15), 0 6px 0 #c76c18;
+    box-shadow:
+      inset 0 -6px 0 rgba(0, 0, 0, 0.15),
+      0 6px 0 #c76c18;
 
     &:active {
-      box-shadow: inset 0 -4px 0 rgba(0 0 0 / 0.15), 0 2px 0 #c76c18;
+      box-shadow:
+        inset 0 -4px 0 rgba(0 0 0 / 0.15),
+        0 2px 0 #c76c18;
     }
   }
 
   .btn-rock {
     background: linear-gradient(hsl(349 71% 52%), hsl(349 70% 56%));
-    box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #9d1634;
+    box-shadow:
+      inset 0 -6px 0 rgba(0 0 0 / 0.15),
+      0 6px 0 #9d1634;
 
     &:active {
-      box-shadow: inset 0 -4px 0 rgba(0 0 0 / 0.15), 0 2px 0 #9d1634;
+      box-shadow:
+        inset 0 -4px 0 rgba(0 0 0 / 0.15),
+        0 2px 0 #9d1634;
+    }
+  }
+
+  .btn-lizard {
+    background: linear-gradient(hsl(261 73% 60%), hsl(261 72% 63%));
+    box-shadow:
+      inset 0 -6px 0 rgba(0 0 0 / 0.15),
+      0 6px 0 #5f37a8;
+
+    &:active {
+      box-shadow:
+        inset 0 -4px 0 rgba(0 0 0 / 0.15),
+        0 2px 0 #5f37a8;
+    }
+  }
+
+  .btn-spock {
+    background: linear-gradient(hsl(189 59% 53%), hsl(189 58% 57%));
+    box-shadow:
+      inset 0 -6px 0 rgba(0 0 0 / 0.15),
+      0 6px 0 #2d8dab;
+
+    &:active {
+      box-shadow:
+        inset 0 -4px 0 rgba(0 0 0 / 0.15),
+        0 2px 0 #2d8dab;
     }
   }
 }
@@ -105,15 +182,15 @@ footer {
 /* ANCHOR Game Board Design */
 .game-board {
   height: 50%;
-  background-image: url(images/bg-triangle.svg);
-  background-size: 90% auto;
+  background-image: url(assets/images/bg-pentagon.svg);
+  background-size: 80% auto;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   transition: allow-discrete opacity 0.7s linear;
 
   .btn-hand {
-    width: 6.3rem;
+    width: 6rem;
     aspect-ratio: 1;
     position: absolute;
     display: flex;
@@ -144,22 +221,43 @@ footer {
     }
 
     &.btn-paper {
-      top: 0;
-      left: 0;
-    }
-    &.btn-scissors {
-      top: 0;
+      top: 25%;
       right: 0;
     }
 
-    &.btn-rock {
-      bottom: 0;
+    &.btn-scissors {
+      top: 0;
       left: 50%;
       transform: translateX(-50%);
 
       &:active {
         transform: translateX(-50%) translateY(4px);
       }
+    }
+
+    &.btn-rock {
+      bottom: 0;
+      right: 0;
+      transform: translateX(-50%);
+
+      &:active {
+        transform: translateX(-50%) translateY(4px);
+      }
+    }
+
+    &.btn-lizard {
+      bottom: 0;
+      left: 0;
+      transform: translateX(50%);
+
+      &:active {
+        transform: translateX(50%) translateY(4px);
+      }
+    }
+
+    &.btn-spock {
+      top: 25%;
+      left: 0;
     }
   }
 }
@@ -171,6 +269,7 @@ footer {
   flex-wrap: wrap;
   gap: 1rem;
   transition: allow-discrete opacity 0.7s linear;
+  color: azure;
 
   .picked-hand {
     display: flex;
@@ -215,17 +314,25 @@ footer {
 
     &:active {
       transform: none;
-      box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #1b2b46;
+      box-shadow:
+        inset 0 -6px 0 rgba(0 0 0 / 0.15),
+        0 6px 0 #1b2b46;
     }
 
     &.btn-paper {
-      box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #2844a1;
+      box-shadow:
+        inset 0 -6px 0 rgba(0 0 0 / 0.15),
+        0 6px 0 #2844a1;
     }
     &.btn-scissors {
-      box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #c76c18;
+      box-shadow:
+        inset 0 -6px 0 rgba(0 0 0 / 0.15),
+        0 6px 0 #c76c18;
     }
     &.btn-rock:active {
-      box-shadow: inset 0 -6px 0 rgba(0 0 0 / 0.15), 0 6px 0 #9d1634;
+      box-shadow:
+        inset 0 -6px 0 rgba(0 0 0 / 0.15),
+        0 6px 0 #9d1634;
     }
 
     &.winner::after {
@@ -237,7 +344,10 @@ footer {
       height: 100%;
       border-radius: 50%;
       z-index: -1;
-      box-shadow: 0 0 0 40px rgba(255 255 255 / 0.04), 0 0 0 80px rgba(255 255 255 / 0.03), 0 0 0 130px rgba(255 255 255 / 0.02);
+      box-shadow:
+        0 0 0 40px rgba(255 255 255 / 0.04),
+        0 0 0 80px rgba(255 255 255 / 0.03),
+        0 0 0 130px rgba(255 255 255 / 0.02);
       animation: ripple 1s ease-out forwards infinite;
     }
   }
@@ -335,23 +445,36 @@ footer {
   }
 }
 
-@container (width > 512px) {
+@container (width >= 46rem) {
   .game-wrapper {
     aspect-ratio: 5 / 4;
 
     .game-board {
       height: 100%;
-      background-size: 90% 90%;
+      background-size: 80% auto;
     }
-  }
-
-  .rules-design {
   }
 }
 
-@media (width > 512px) {
+@media (width >= 46rem) {
   footer {
     text-align: end;
     margin-right: 1rem;
+  }
+
+  .rules-design {
+    position: fixed;
+    max-width: 900px;
+    border-radius: 10px;
+    height: auto;
+    aspect-ratio: 5 / 4;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 175%);
+    bottom: -100%;
+
+    &.reveal {
+      transform: translate(-50%, -50%);
+    }
   }
 }

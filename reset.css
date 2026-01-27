@@ -12,7 +12,7 @@ body {
   min-height: 100svh;
   display: grid;
   /* Uncomment if using header & footer */
-  /* grid-template-rows: auto 1fr auto; */
+  grid-template-rows: auto 1fr auto;
   font-family: system-ui, Arial;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
