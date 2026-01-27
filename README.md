@@ -8,7 +8,7 @@ A modernized, interactive version of the classic game rock paper scissors but wi
 
 ## 🔗 Links
 
-- **Live Demo Link:**
+- **Live Demo Link:** https://e3prime.github.io/rpsls
 
 ## ⚔️ RPSLS Showcase
 
