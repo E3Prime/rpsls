@@ -1,0 +1,138 @@
+/* ANCHOR Resets */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100svh;
+  display: grid;
+  /* Uncomment if using header & footer */
+  /* grid-template-rows: auto 1fr auto; */
+  font-family: system-ui, Arial;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+p,
+li,
+figcaption {
+  max-width: 63ch;
+  text-wrap: pretty;
+}
+
+/* ANCHOR Compositions */
+
+.flow > :where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1em);
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+.max-w-xxl {
+  max-width: 100rem;
+}
+
+.max-w-xl {
+  max-width: 79rem;
+}
+
+.max-w-lg {
+  max-width: 64rem;
+}
+
+.max-w-md {
+  max-width: 46rem;
+}
+
+.max-w-s {
+  max-width: 36rem;
+}
+
+/* ANCHOR Utilities */
+
+.fade-in {
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flow-space-xxl {
+  --flow-space: 3rem;
+}
+
+.flow-space-xl {
+  --flow-space: 2.5rem;
+}
+
+.flow-space-lg {
+  --flow-space: 2rem;
+}
+
+.flow-space-md {
+  --flow-space: 1.5rem;
+}
+
+.flow-space-sm {
+  --flow-space: 1rem;
+}
+
+.flow-space-xs {
+  --flow-space: 0.5rem;
+}
+
+.flow-space-base {
+  --flow-space: 1em;
+}
+
+[hidden] {
+  display: none !important;
+}
